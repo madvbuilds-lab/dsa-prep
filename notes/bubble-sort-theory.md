@@ -22,3 +22,6 @@ for(i=n-1 ; i>=1 ; i--){
 }
 
 - if you are accessing an element not present it wiil throw a runtime error
+- Time Complexity 
+Worst case :- O(n^2)
+Best case :- O(n).
