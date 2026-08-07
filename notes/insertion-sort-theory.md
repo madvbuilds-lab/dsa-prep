@@ -14,3 +14,7 @@ for(i=0 ; i<=n-1 ; i++){
         swap them 
     }
 }
+
+- Time Complexity:-
+Worst case - O(n^2)
+Best case - O(n)
