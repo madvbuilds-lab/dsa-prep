@@ -58,6 +58,51 @@ public class singlyLinkedList{
         prev.next = newNode;
         size++;
     }
+    // Deletion
+    // Deletion from the head - O(1)
+    public void deleteHead(){
+        if(head == null) return;
+        head = head.next;
+        size--;
+    }
+    // Deletion From Tail -O(N) 
+    public void deleteTail(){
+        if(head == null) return;
+        if(head.next == null){head = null; size--; return;}
+        Node curr =head;
+        while(curr.next.next != null){
+            curr =curr.next;
+        }
+        curr.next = null;
+        size--;
+    }
+    // Deletion first node atching a value - O(n)
+    public boolean deleteValue(int val){
+        if(head == null) return false ;
+        if(head.data == val ) { head = head.next; size--; return true;}
+
+        Node prev = head;
+        Node curr = head.next;
+        while(curr != null){
+            if(curr.data == val){
+                prev.next = curr.next;
+                size--;
+                return true;
+            }
+            prev = curr ;
+            curr = curr.next;
+        }
+        return false;
+    }
+    // Deletion At a Given Index - O(n)
+    public void deleteAtPosition(int pos){
+        if(pos < 0 || pos > size) throw new IndexOutOfBoundsException();
+        if(pos == 0) {deleteHead(); return;}
+        Node prev = head ;
+        for(int i = 0 ; i< pos - 1 ; i++) prev = prev.next;
+        prev.next = prev.next.next;
+        size--;
+    }
      public static void main(String[] args) {
         singlyLinkedList list = new singlyLinkedList();
 
@@ -65,7 +110,10 @@ public class singlyLinkedList{
         list.insertAtHead(5);
         list.insertAtTail(20);
         list.insertAtPosition(2, 99);
-
-        list.printList();   // you'll need this method too — see below
+        list.deleteHead();
+        list.deleteTail();
+        list.deleteValue(99);
+        list.deleteAtPosition(0);
+        list.printList();  
     }
 }
