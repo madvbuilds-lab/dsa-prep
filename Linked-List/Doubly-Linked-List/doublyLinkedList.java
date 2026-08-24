@@ -1,4 +1,14 @@
 public class doublyLinkedList {
+    public static Node deleteAtTail(Node head){
+        if(head == null) return null;
+        if(head.next == null) return null;
+        Node temp = head;
+        while(temp != null){
+            temp = temp.next;
+        }
+        temp.prev.next =null;
+        return head;
+    }
     public static Node insertAtTail(Node head , int k){
         Node newNode = new Node(k);
         if(head ==null){
