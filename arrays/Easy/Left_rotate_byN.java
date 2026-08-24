@@ -28,34 +28,33 @@ class Left_rotate_byN {
     }
 }
 
+@SuppressWarnings("unused")
 class Main {
     public static void main(String[] args) {
         Left_rotate_byN lef = new Left_rotate_byN();
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter size of array: ");
-        int n = sc.nextInt();
-
-        int[] nums = new int[n];
-        System.out.println("Enter " + n + " elements: ");
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter size of array: ");
+            int n = sc.nextInt();
+            
+            int[] nums = new int[n];
+            System.out.println("Enter " + n + " elements: ");
+            for (int i = 0; i < n; i++) {
+                nums[i] = sc.nextInt();
+            }
+            
+            System.out.print("Enter value of k: ");
+            int k = sc.nextInt();
+            
+            System.out.print("Enter direction (left/right): ");
+            String direction = sc.next();
+            
+            int[] result = lef.rotateArray(nums, k, direction);
+            
+            System.out.print("Rotated array: ");
+            for (int val : result) {
+                System.out.print(val + " ");
+            }
+            System.out.println();
         }
-
-        System.out.print("Enter value of k: ");
-        int k = sc.nextInt();
-
-        System.out.print("Enter direction (left/right): ");
-        String direction = sc.next();
-
-        int[] result = lef.rotateArray(nums, k, direction);
-
-        System.out.print("Rotated array: ");
-        for (int val : result) {
-            System.out.print(val + " ");
-        }
-        System.out.println();
-
-        sc.close();
     }
 }
