@@ -18,20 +18,18 @@ public class SubsetSums {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
 
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            SubsetSums obj = new SubsetSums();
+            ArrayList<Integer> res = obj.subsetSums(arr);
+
+            Collections.sort(res);
+            System.out.println(res);
         }
-
-        SubsetSums obj = new SubsetSums();                       
-        ArrayList<Integer> res = obj.subsetSums(arr); 
-
-        Collections.sort(res);
-        System.out.println(res);
-
-        sc.close();
     }
 }
