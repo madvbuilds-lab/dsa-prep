@@ -1,29 +1,36 @@
 class InversionCount {
-    static long mergeCount(int[] arr, int l, int r) {
-        if (l >= r) return 0;
-        int mid = l + (r - l) / 2;
-        long count = mergeCount(arr, l, mid) + mergeCount(arr, mid + 1, r);
-
-        int[] temp = new int[r - l + 1];
-        int i = l, j = mid + 1, k = 0;
-
-        while (i <= mid && j <= r) {
-            if (arr[i] <= arr[j]) {
-                temp[k++] = arr[i++];
-            } else {
-                temp[k++] = arr[j++];
-                count += mid - i + 1;  
-            }
-        }
-        while (i <= mid) temp[k++] = arr[i++];
-        while (j <= r)   temp[k++] = arr[j++];
-
-        for (k = 0; k < temp.length; k++) arr[l + k] = temp[k];
+    static int count;
+    static int inversionCount(int[] arr){
+        count = 0;
+        mergeSort(arr);
         return count;
     }
+    private static void mergeSort(int[] arr){
+        int n = arr.length;
+        if(n==1) return;
+        int[] a = new int[n/2];
+        int[] b = new int[n-n/2];
+        int idx = 0;
+        for(int i = 0 ; i < a.length;i++) a[i]= arr[idx++];
+        for(int i = 0 ; i < b.length;i++) b[i]= arr[idx++];
+        mergeSort(a);mergeSort(b);
+        merge(a,b,arr);
+    }
+    public static void merge(int[] a , int[] b , int[] c){
+        int i =0 , j = 0 , k = 0 ;
+        while(i<a.length && j<b.length){
+            if(a[i] <= b[j]) c[k++] = a[i++];
+            else{
+                count += (a.length - i);
+                c[k++] = b[j++];
+            }
+        }
+        while(i<a.length) c[k++] = a[i++];
+        while(j<b.length) c[k++] = b[j++];
 
+    }
     public static void main(String[] args) {
-        int[] arr = {2, 4, 1, 3, 5};
-        System.out.println(mergeCount(arr, 0, arr.length - 1));  // 3
+        int[] arr = {2,4,1,3,5};
+        System.out.print(inversionCount(arr));
     }
 }
