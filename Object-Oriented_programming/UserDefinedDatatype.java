@@ -4,6 +4,7 @@ class UserDefinedDatatype{
         String name;
         int rno;
         double cgpa;
+        //We can also make User defined data structure to help print the variables inside the main function.
         void print(){
             System.out.println(name + " " + rno + " " + cgpa);
         }
@@ -16,6 +17,7 @@ class UserDefinedDatatype{
         s.name = "Madhav";
         s.rno = 21;
         s.cgpa = 7.9;
+        // prints the variables without using System.out.print()
         s.print();
         
     }
