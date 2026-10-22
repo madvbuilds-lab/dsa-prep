@@ -1,16 +1,22 @@
 class UserDefinedDatatype{
+    //Student is a class that refers to all the classification that it consist of. A class is like a Blueprint for the Objects.
     public static class Student{
         String name;
         int rno;
         double cgpa;
+        void print(){
+            System.out.println(name + " " + rno + " " + cgpa);
+        }
     }
     public static void main(String[] args) {
         //Declaration
+        //Here "s" is an object that is like an instance of a class that consist of real world entities.
         Student s = new Student();
         //Initialization
         s.name = "Madhav";
         s.rno = 21;
         s.cgpa = 7.9;
-        System.out.print(s.cgpa);
+        s.print();
+        
     }
 }
