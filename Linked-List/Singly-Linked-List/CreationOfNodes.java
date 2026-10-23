@@ -6,6 +6,14 @@ class CreationOfNodes{
             this.val =val;
         }
     }
+    // Accessing the Value at a given index.
+    public static int get(Node head , int idx ){
+        Node temp = head ;
+        for(int i = 1 ; i <= idx ; i++){
+            temp =temp.next;
+        }
+        return temp.val;
+    }
     public static void main(String[] args) {
         Node a = new Node(10);
         Node b = new Node(20);
@@ -17,6 +25,6 @@ class CreationOfNodes{
         c.next = d;
         d.next = e;
         e.next = null;
-
+        System.out.print(get(a,3));
     }
 }

@@ -26,6 +26,7 @@ class DisplayAllElements{
         displayRec(head.next);
         System.out.print(head.val+" ");
     }
+    
     public static void main(String[] args) {
         Node a = new Node(10);
         Node b = new Node(20);
